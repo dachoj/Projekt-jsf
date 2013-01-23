@@ -7,19 +7,19 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-@FacesValidator("pinValidator")
-public class PinValidator implements Validator {
+@FacesValidator("serialValidator")
+public class SerialValidator implements Validator {
 
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value)
 			throws ValidatorException {
 		
-		String pesel = (String) value;
+		String number = (String) value;
 		
-		if (pesel.length() != 4) {
+		if (number.length() != 4) {
 			FacesMessage message = new FacesMessage();
-			message.setDetail("PIN musi składać się z 4 cyfr");
-			message.setSummary("PIN musi składać się z 4 cyfr");
+			message.setDetail("Serial musi składać się z 4 cyfr");
+			message.setSummary("Serial musi składać się z 4 cyfr");
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(message);
 		}

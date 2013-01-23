@@ -6,43 +6,43 @@
 	template="/templates/default.xhtml">
 	<ui:define name="content">
 
-		<h:form id="personForm">
+		<h:form id="bookForm">
 			<h:panelGrid columns="2">
 
-				<h:outputText value="#{msg.personFirstNameLabel}" />
-				<h:inputText id="firstName" value="#{personBean.person.firstName}"
+				<h:outputText value="#{msg.bookTitleLabel}" />
+				<h:inputText id="title" value="#{bookBean.book.title}"
 					required="#{true}" />
 
-				<h:outputText value="#{msg.personPinLabel}" />
-				<h:inputText id="pin" value="#{personBean.person.pin}"
-					validator="#{personBean.uniquePin}" required="#{true}">
-					<f:validator validatorId="pinValidator" />
+				<h:outputText value="#{msg.bookSerialLabel}" />
+				<h:inputText id="serial" value="#{bookBean.book.serial}"
+					validator="#{bookBean.uniqueSerial}" required="#{true}">
+					<f:validator validatorId="serialValidator" />
 					<f:ajax execute="@this" render="messages beanState" />
 				</h:inputText>
 
-				<h:outputText value="#{msg.personDobLabel}" />
-				<h:inputText id="dob" value="#{personBean.person.dateOfBirth}">
+				<h:outputText value="#{msg.bookDopLabel}" />
+				<h:inputText id="dop" value="#{bookBean.book.dateOfPrint}">
 					<f:convertDateTime type="date" pattern="dd.MM.yyyy" />
 				</h:inputText>
 
-				<h:outputText value="#{msg.personZipCodeLabel}" />
-				<h:inputText id="zipCode" value="#{personBean.person.zipCode}" />
+				<h:outputText value="#{msg.bookKindLabel}" />
+				<h:inputText id="kind" value="#{bookBean.book.kind}" />
 
-				<h:outputText value="#{msg.personWeightLabel}" />
-				<h:inputText id="weight" value="#{personBean.person.weight}">
-					<f:validateDoubleRange minimum="20.5" maximum="150.5" />
+				<h:outputText value="#{msg.bookPagesLabel}" />
+				<h:inputText id="pages" value="#{bookBean.book.pages}">
+					<f:validateDoubleRange minimum="5" maximum="4032" />
 					<f:ajax execute="@this" render="messages beanState" />
 				</h:inputText>
 
-				<h:outputText value="#{msg.personNumOfChildrenLabel}" />
-				<h:inputText id="noc" value="#{personBean.person.numOfChildren}">
+				<h:outputText value="#{msg.bookQuantityLabel}" />
+				<h:inputText id="qua" value="#{bookBean.book.quantity}">
 
 				</h:inputText>
 
 			</h:panelGrid>
 
-			<h:commandButton value="#{msg.personFormOKButton}"
-				action="#{personBean.addPerson}" />
+			<h:commandButton value="#{msg.bookFormOKButton}"
+				action="#{bookBean.addBook}" />
 
 
 			<h:panelGrid>
@@ -51,15 +51,15 @@
 			</h:panelGrid>
 
 			<h:panelGrid id="beanState" columns="2">
-				<h:outputText value="#{msg.personFirstNameLabel}" />
-				<h:outputText id="nameOutput" value="#{personBean.person.firstName}" />
+				<h:outputText value="#{msg.bookTitleLabel}" />
+				<h:outputText id="titleOutput" value="#{bookBean.book.title}" />
 
-				<h:outputText value="#{msg.personPinLabel}" />
-				<h:outputText id="pinOutput" value="#{personBean.person.pin}" />
+				<h:outputText value="#{msg.bookSerialLabel}" />
+				<h:outputText id="serialOutput" value="#{bookBean.book.serial}" />
 
-				<h:outputText value="#{msg.personDobLabel}" />
-				<h:outputText id="dobOutput"
-					value="#{personBean.person.dateOfBirth}" />
+				<h:outputText value="#{msg.bookDopLabel}" />
+				<h:outputText id="dopOutput"
+					value="#{bookBean.book.dateOfPrint}" />
 			</h:panelGrid>
 
 		</h:form>
